@@ -37,7 +37,12 @@ export default {
   },
   methods: {
     callApi() {
-      fetch("//localhost:3001/api/ping")
+      fetch("//localhost:3001/api/ping", {
+        // Add a Content-Type header to make it a Preflight request
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
         .then(async response => {
           if (response.ok) {
             this.apiError = false;
